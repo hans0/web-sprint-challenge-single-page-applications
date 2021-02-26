@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  flex-basis: 20%;
+  
+  border: 1px solid black;
+}
+.header .links {
+  /* justify-content: flex-end; */
+  padding: 10px;
+  flex-basis: 20%;
+  border: 1px solid black;
+}
+
+button {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  padding: 15px 32px;
+  width:250px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: 1px solid green;
+}
