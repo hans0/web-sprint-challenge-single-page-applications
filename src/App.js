@@ -1,4 +1,4 @@
-import React, { useDebugValue, useState } from 'react';
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import * as yup from 'yup';
 import axios from 'axios';
@@ -42,7 +42,9 @@ export default function App() {
   
 
   const postPizzaOrder = newPizza => {
-    // this phantom api is used to register users.
+    // this phantom api is used to register users. mildly infuriating mystery as to how I'm supposed to use it to submit pizza orders
+    // not being able to submit this, coupled with a lapse in some medication, is why I'm calling this sprint early
+    // hopefully, this will not be an issue in the future, when we learn how to make local Rest APIs
     axios.post(`https://reqres.in/api/register/`, newPizza)
     .then((res) => {
       console.log(res)
