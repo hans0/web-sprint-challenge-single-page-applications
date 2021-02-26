@@ -1,8 +1,11 @@
 import React, { useDebugValue, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import * as yup from 'yup';
+import axios from 'axios';
 import Header from './components/Header';
 import Home from './components/Home';
 import PizzaOrderForm from './components/PizzaOrderForm';
+import orderFormSchema from './validation/orderFormSchema';
 
 
 const initialPizzaProperties = {
@@ -35,6 +38,16 @@ export default function App() {
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   
   const propertiesChange = (name, value) => {
+    // validation to schema
+    yup.reach(orderFormSchema, name)
+      .validate(value)
+      .then(() => {
+        setFormErrors({...formErrors, [name]: ''})
+      })
+      .catch((err) => {
+        setFormErrors({...formErrors, [name]: err.errors[0]})
+      })
+    
     setPizzaProperties({
       ...pizzaProperties, 
       [name]: value
@@ -46,7 +59,7 @@ export default function App() {
       <Header />
       <Switch>
         <Route path='/pizza'>
-          {console.log(`App.js`, pizzaProperties.cheeseAmount)}
+          {/* {console.log(`App.js`, pizzaProperties.cheeseAmount)} */}
           <PizzaOrderForm 
             pizzaProperties={pizzaProperties} 
             toppings={toppings}

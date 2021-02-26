@@ -1,4 +1,5 @@
 import React from 'react';
+import './PizzaOrderForm.css';
 
 export default function PizzaOrderForm(props) {
   const {
@@ -89,6 +90,11 @@ export default function PizzaOrderForm(props) {
           )
         })}
         <button>submit</button>
+        <div className="errors">
+          <div>{formErrors.size}</div>
+          <div>{formErrors.sauce}</div>
+          <div>{formErrors.cheeseAmount}</div>
+        </div>
     </div>
   )
 }
