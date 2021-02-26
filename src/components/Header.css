@@ -9,6 +9,7 @@
 }
 .header .links {
   /* justify-content: flex-end; */
+  margin: auto 0;
   padding: 10px;
   flex-basis: 20%;
   border: 1px solid black;

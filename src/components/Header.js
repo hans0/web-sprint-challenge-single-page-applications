@@ -6,8 +6,8 @@ export default function Header() {
     <div className='header'>
       <h1>Lambda Eats</h1>
       <div className='header links'>
-        <button>Home</button>
-        <button>Help</button>
+        <a href="/"><button>Home</button></a>
+        <a href="/pizza"><button>Order</button></a>
       </div>
     </div>
   )

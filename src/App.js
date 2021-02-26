@@ -9,14 +9,17 @@ import orderFormSchema from './validation/orderFormSchema';
 
 
 const initialPizzaProperties = {
+  name: '',
   size: '',
   sauce: '',
   cheeseAmount: '',
+  specialInstructions: ''
 }
 
 const initialToppings = [];
 
 const initialFormErrors = {
+  name: '',
   size: '',
   sauce: '',
   cheeseAmount: '',
@@ -37,6 +40,18 @@ export default function App() {
   const [toppings, setToppings] = useState(initialToppings);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   
+
+  const postPizzaOrder = newPizza => {
+    // this phantom api is used to register users.
+    axios.post(`https://reqres.in/api/register/`, newPizza)
+    .then((res) => {
+      console.log(res)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+
   const propertiesChange = (name, value) => {
     // validation to schema
     yup.reach(orderFormSchema, name)
@@ -54,6 +69,18 @@ export default function App() {
     })
   }
   
+  const pizzaSubmit = () => {
+    console.log(`App.js pizzaSubmit`)
+    const newPizza = {
+      name: pizzaProperties.name,
+      size: pizzaProperties.size,
+      sauce: pizzaProperties.sauce,
+      cheeseAmount: pizzaProperties.cheeseAmount,
+      toppings: toppings
+    }
+    postPizzaOrder(newPizza);
+  }
+
   return (
     <>
       <Header />
@@ -67,6 +94,7 @@ export default function App() {
             propertiesChange={propertiesChange}
             formErrors={formErrors}
             toppingOfferings={toppingOfferings}
+            pizzaSubmit={pizzaSubmit}
           />
         </Route>
         <Route path='/'>
